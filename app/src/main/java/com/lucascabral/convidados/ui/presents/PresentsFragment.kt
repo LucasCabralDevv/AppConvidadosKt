@@ -1,4 +1,4 @@
-package com.lucascabral.convidados.ui.gallery
+package com.lucascabral.convidados.ui.presents
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.lucascabral.convidados.R
 
-class GalleryFragment : Fragment() {
+class PresentsFragment : Fragment() {
 
-    private lateinit var galleryViewModel: GalleryViewModel
+    private lateinit var presentsViewModel: PresentsViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        galleryViewModel =
-                ViewModelProvider(this).get(GalleryViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_gallery, container, false)
+        presentsViewModel =
+                ViewModelProvider(this).get(PresentsViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_presents, container, false)
         val textView: TextView = root.findViewById(R.id.text_gallery)
-        galleryViewModel.text.observe(viewLifecycleOwner, Observer {
+        presentsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

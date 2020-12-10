@@ -1,4 +1,4 @@
-package com.lucascabral.convidados.ui.slideshow
+package com.lucascabral.convidados.ui.absents
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.lucascabral.convidados.R
 
-class SlideshowFragment : Fragment() {
+class AbsentsFragment : Fragment() {
 
-    private lateinit var slideshowViewModel: SlideshowViewModel
+    private lateinit var absentsViewModel: AbsentsViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        slideshowViewModel =
-                ViewModelProvider(this).get(SlideshowViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_slideshow, container, false)
+        absentsViewModel =
+                ViewModelProvider(this).get(AbsentsViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_absents, container, false)
         val textView: TextView = root.findViewById(R.id.text_slideshow)
-        slideshowViewModel.text.observe(viewLifecycleOwner, Observer {
+        absentsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

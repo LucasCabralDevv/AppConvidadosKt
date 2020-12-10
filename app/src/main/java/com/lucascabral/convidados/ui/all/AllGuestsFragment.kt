@@ -1,4 +1,4 @@
-package com.lucascabral.convidados.ui.home
+package com.lucascabral.convidados.ui.all
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.lucascabral.convidados.R
 
-class HomeFragment : Fragment() {
+class AllGuestsFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var allGuestsViewModel: AllGuestsViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-                ViewModelProvider(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        allGuestsViewModel =
+                ViewModelProvider(this).get(AllGuestsViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_all, container, false)
         val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+        allGuestsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
