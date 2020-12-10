@@ -1,4 +1,4 @@
-package com.lucascabral.convidados.ui.presents
+package com.lucascabral.convidados.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
