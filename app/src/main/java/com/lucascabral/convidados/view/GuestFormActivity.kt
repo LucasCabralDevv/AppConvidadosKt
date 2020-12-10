@@ -42,15 +42,16 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
         guestSaveButton.setOnClickListener(this)
     }
 
-    private fun observe(){
+    private fun observe() {
 
         mViewModel.saveGuest.observe(this, Observer {
 
-            if (it){
+            if (it) {
                 Toast.makeText(applicationContext, "Sucesso!", Toast.LENGTH_SHORT).show()
-            }else{
+            } else {
                 Toast.makeText(applicationContext, "Falha!", Toast.LENGTH_SHORT).show()
             }
+            finish()
         })
     }
 }
