@@ -1,20 +1,36 @@
 package com.lucascabral.convidados.service.repository
 
+import android.content.Context
 import com.lucascabral.convidados.service.model.GuestModel
 
-class GuestRepository {
+class GuestRepository private constructor(context: Context) {
 
-    fun getAll(): List<GuestModel>{
+    private var mGuestDataBaseHelper: GuestDataBaseHelper = GuestDataBaseHelper(context)
+
+    // Singleton
+    companion object {
+
+        private lateinit var repository: GuestRepository
+
+        fun getInstance(context: Context): GuestRepository {
+            if (!::repository.isInitialized){
+                repository = GuestRepository(context)
+            }
+            return repository
+        }
+    }
+
+    fun getAll(): List<GuestModel> {
         val list: MutableList<GuestModel> = ArrayList()
         return list
     }
 
-    fun getPresents(): List<GuestModel>{
+    fun getPresents(): List<GuestModel> {
         val list: MutableList<GuestModel> = ArrayList()
         return list
     }
 
-    fun getAbsents(): List<GuestModel>{
+    fun getAbsents(): List<GuestModel> {
         val list: MutableList<GuestModel> = ArrayList()
         return list
     }
@@ -22,11 +38,15 @@ class GuestRepository {
     // CRUD - Create, Read, Update, Delete
 
     fun save(guest: GuestModel) {
+
+        mGuestDataBaseHelper.writableDatabase
     }
 
     fun update(guest: GuestModel) {
+
     }
 
     fun delete(guest: GuestModel) {
+
     }
 }
