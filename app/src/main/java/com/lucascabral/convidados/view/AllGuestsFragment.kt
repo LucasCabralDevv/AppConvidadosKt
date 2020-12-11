@@ -18,16 +18,16 @@ import com.lucascabral.convidados.viewmodel.AllGuestsViewModel
 
 class AllGuestsFragment : Fragment() {
 
-    private lateinit var allGuestsViewModel: AllGuestsViewModel
+    private lateinit var mViewModel: AllGuestsViewModel
     private val mAdapter: GuestAdapter = GuestAdapter()
-    private lateinit var mListener : GuestListener
+    private lateinit var mListener: GuestListener
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        allGuestsViewModel =
+        mViewModel =
             ViewModelProvider(this).get(AllGuestsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_all, container, false)
 
@@ -39,7 +39,7 @@ class AllGuestsFragment : Fragment() {
 
         recycler.adapter = mAdapter
 
-        mListener = object : GuestListener{
+        mListener = object : GuestListener {
             override fun onClick(id: Int) {
                 val intent = Intent(context, GuestFormActivity::class.java)
                 val bundle = Bundle()
@@ -47,21 +47,25 @@ class AllGuestsFragment : Fragment() {
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
+
+            override fun onDelete(id: Int) {
+                mViewModel.delete(id)
+                mViewModel.load()
+            }
         }
         mAdapter.attachListener(mListener)
         observer()
-
         return root
     }
 
     override fun onResume() {
         super.onResume()
-        allGuestsViewModel.load()
+        mViewModel.load()
     }
 
     private fun observer() {
 
-        allGuestsViewModel.guestList.observe(viewLifecycleOwner, Observer {
+        mViewModel.guestList.observe(viewLifecycleOwner, Observer {
             mAdapter.updateGuests(it)
         })
     }

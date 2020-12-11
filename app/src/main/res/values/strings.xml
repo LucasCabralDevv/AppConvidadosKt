@@ -17,4 +17,8 @@
     <string name="guest_guest_text">Convidado</string>
     <string name="guest_name_hint">Digite o nome</string>
     <string name="guest_save_button">Salvar</string>
+    <string name="dialog_remover_title">Remoção de convidado</string>
+    <string name="dialog_remover_message">Deseja realmente remover o convidado da lista?</string>
+    <string name="dialog_positive_button">Sim</string>
+    <string name="dialog_negative_button">Não</string>
 </resources>
