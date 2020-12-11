@@ -8,7 +8,7 @@
     tools:context=".view.GuestFormActivity">
 
     <TextView
-        android:id="@+id/guestConvidadoTextView"
+        android:id="@+id/formNameTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/guest_guest_text"
@@ -19,17 +19,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/guestNameEdit"
+        android:id="@+id/formNameEdit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="@string/guest_name_hint"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guestConvidadoTextView" />
+        app:layout_constraintTop_toBottomOf="@id/formNameTextView" />
 
     <TextView
-        android:id="@+id/guestConfirmationTextView"
+        android:id="@+id/formConfirmationTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -38,39 +38,39 @@
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guestNameEdit" />
+        app:layout_constraintTop_toBottomOf="@id/formNameEdit" />
 
     <RadioGroup
-        android:id="@+id/guestRadio"
+        android:id="@+id/formRadio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guestConfirmationTextView">
+        app:layout_constraintTop_toBottomOf="@id/formConfirmationTextView">
 
         <RadioButton
-            android:id="@+id/guestPresenceRadio"
+            android:id="@+id/formPresenceRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/guest_present_radioButton" />
 
         <RadioButton
-            android:id="@+id/guestAbsentRadio"
+            android:id="@+id/formAbsentRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/guest_absent_radioButton" />
     </RadioGroup>
 
     <Button
-        android:id="@+id/guestSaveButton"
+        android:id="@+id/formSaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Salvar"
+        android:text="@string/guest_save_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guestRadio" />
+        app:layout_constraintTop_toBottomOf="@id/formRadio" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

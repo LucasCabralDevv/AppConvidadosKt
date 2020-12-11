@@ -16,4 +16,5 @@
     <string name="guest_absent_radioButton">Ausente</string>
     <string name="guest_guest_text">Convidado</string>
     <string name="guest_name_hint">Digite o nome</string>
+    <string name="guest_save_button">Salvar</string>
 </resources>
