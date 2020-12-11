@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_guest_form.*
 class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var mViewModel: GuestFormViewModel
+    private var mGuestId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +36,8 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
             val name = formNameEdit.text.toString()
             val presence = formPresenceRadio.isChecked
 
-            mViewModel.save(name, presence)
+            mViewModel.save(mGuestId, name, presence)
+
         }
     }
 
@@ -43,8 +45,8 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
 
         val bundle = intent.extras
         if (bundle != null) {
-            val id = bundle.getInt(GuestConstants.GUEST_ID)
-            mViewModel.load(id)
+            mGuestId = bundle.getInt(GuestConstants.GUEST_ID)
+            mViewModel.load(mGuestId)
         }
     }
 
@@ -66,9 +68,9 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
 
         mViewModel.guest.observe(this, Observer {
             formNameEdit.setText(it.name)
-            if (it.presence){
+            if (it.presence) {
                 formPresenceRadio.isChecked = true
-            }else{
+            } else {
                 formAbsentRadio.isChecked = true
             }
         })

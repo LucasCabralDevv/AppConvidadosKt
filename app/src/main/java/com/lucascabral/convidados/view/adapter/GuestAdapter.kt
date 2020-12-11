@@ -19,7 +19,8 @@ class GuestAdapter : RecyclerView.Adapter<GuestViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: GuestViewHolder, position: Int) {
-        holder.bind(mGuestList[position])
+            holder.bind(mGuestList[position])
+
     }
 
     override fun getItemCount(): Int {
