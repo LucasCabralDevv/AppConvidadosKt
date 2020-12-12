@@ -14,11 +14,11 @@ import com.lucascabral.convidados.R
 import com.lucascabral.convidados.service.constants.GuestConstants
 import com.lucascabral.convidados.view.adapter.GuestAdapter
 import com.lucascabral.convidados.view.listener.GuestListener
-import com.lucascabral.convidados.viewmodel.AllGuestsViewModel
+import com.lucascabral.convidados.viewmodel.GuestsViewModel
 
 class AllGuestsFragment : Fragment() {
 
-    private lateinit var mViewModel: AllGuestsViewModel
+    private lateinit var mViewModel: GuestsViewModel
     private val mAdapter: GuestAdapter = GuestAdapter()
     private lateinit var mListener: GuestListener
 
@@ -28,7 +28,7 @@ class AllGuestsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         mViewModel =
-            ViewModelProvider(this).get(AllGuestsViewModel::class.java)
+            ViewModelProvider(this).get(GuestsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_all, container, false)
 
         val recycler = root.findViewById<RecyclerView>(R.id.allGuestsRecycler)
@@ -50,7 +50,7 @@ class AllGuestsFragment : Fragment() {
 
             override fun onDelete(id: Int) {
                 mViewModel.delete(id)
-                mViewModel.load()
+                mViewModel.load(GuestConstants.FILTER.EMPTY)
             }
         }
         mAdapter.attachListener(mListener)
@@ -60,7 +60,7 @@ class AllGuestsFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        mViewModel.load()
+        mViewModel.load(GuestConstants.FILTER.EMPTY)
     }
 
     private fun observer() {
