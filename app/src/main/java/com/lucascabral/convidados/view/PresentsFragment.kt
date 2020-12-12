@@ -54,7 +54,6 @@ class PresentsFragment : Fragment() {
                 mViewModel.load(GuestConstants.FILTER.PRESENT)
             }
         }
-        mAdapter.attachListener(mListener)
         observer()
 
         return root
@@ -62,6 +61,7 @@ class PresentsFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        mAdapter.attachListener(mListener)
         mViewModel.load(GuestConstants.FILTER.PRESENT)
     }
 

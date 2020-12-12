@@ -12,7 +12,7 @@ import com.lucascabral.convidados.service.repository.GuestRepository
 class GuestsViewModel(application: Application) : AndroidViewModel(application) {
 
     val mContext = application.applicationContext
-    private val mGuestRepository = GuestRepository.getInstance(mContext)
+    private val mGuestRepository = GuestRepository(mContext)
 
     private val mGuestList = MutableLiveData<List<GuestModel>>()
     val guestList: LiveData<List<GuestModel>> = mGuestList
@@ -29,7 +29,7 @@ class GuestsViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     fun delete(id: Int) {
-
-        mGuestRepository.delete(id)
+        val guest = mGuestRepository.get(id)
+        mGuestRepository.delete(guest)
     }
 }
